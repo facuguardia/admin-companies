@@ -1,4 +1,4 @@
-import { CustomeIconProps } from "./CustomIcon.type";
+import { CustomeIconProps } from "./CustomIcon.types";
 
 export function CustomeIcon(props: CustomeIconProps) {
   const { icon: Icon } = props;

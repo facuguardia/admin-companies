@@ -1,5 +1,5 @@
 import { CustomeIcon } from "@/components/CustomIcon";
-import { CardSummaryProps } from "./CardSummary.type";
+import { CardSummaryProps } from "./CardSummary.types";
 import { CustomTooltip } from "@/components/CustomTooltip";
 import { cn } from "@/lib/utils";
 import { MoveDownRight, MoveUpRight, TrendingUp } from "lucide-react";
