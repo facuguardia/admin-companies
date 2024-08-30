@@ -1,9 +1,9 @@
-import { UserButton } from "@clerk/nextjs";
 import { CardSummary } from "./components/CardSummary/CardSummary";
 import { BookOpenCheck, UserRound, Waypoints } from "lucide-react";
 import { LastCustomers } from "./components/LastCustomers";
 import { SalesDistributors } from "./components/SalesDistributors";
 import { TotalSuscribers } from "./components/TotalSuscribers";
+import { ListIntegrations } from "./components/ListIntegrations";
 
 export const dataCardsSummary = [
   {
@@ -51,9 +51,9 @@ export default function Home() {
         <LastCustomers />
         <SalesDistributors />
       </div>
-      <div className="flex-col xl:flex xl:flex-row gap-y-4 md:gap-y-0 mt-12 md:mb-10 justify-center">
+      <div className="flex-col xl:flex xl:flex-row gap-x-4 md:gap-y-0 mt-12 md:mb-10 justify-center">
         <TotalSuscribers />
-        <p>List integrations</p>
+        <ListIntegrations />
       </div>
     </div>
   );
