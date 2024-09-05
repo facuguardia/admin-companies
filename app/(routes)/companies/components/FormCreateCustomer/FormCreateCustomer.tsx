@@ -24,6 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { UploadButton } from "@/utils/uploadthing";
 
 const formSchema = z.object({
   name: z.string(),
@@ -185,17 +186,12 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
                 <FormItem>
                   <FormLabel>CIF</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="B-123789"
-                      type="text"
-                      {...field}
-                    />
+                    <Input placeholder="B-123789" type="text" {...field} />
                   </FormControl>
 
                   <FormMessage />
                 </FormItem>
               )}
-
             />
 
             {/* Profile Image */}
@@ -206,17 +202,22 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
                 <FormItem>
                   <FormLabel>Profile Image</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="B-123789"
-                      type="text"
-                      {...field}
+                    <UploadButton
+                      className="bg-slate-600/20 text-slate-800 rounded-lg outline-dotted outline-4"
+                      endpoint="profileImage"
+                      onClientUploadComplete={(res) => {
+                        form.setValue("profileImage", res?.[0].url)
+                        setPhotoUploaded(true)
+                      }}
+                      onUploadError={(error: Error)=>{
+                        console.log('error image: ', Error);
+                      }}
                     />
                   </FormControl>
 
                   <FormMessage />
                 </FormItem>
               )}
-
             />
           </div>
           <Button type="submit">Submit</Button>
@@ -224,4 +225,4 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
       </Form>
     </div>
   );
-}
+}89
