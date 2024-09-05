@@ -14,7 +14,7 @@ import { FormCreateCustomer } from "../FormCreateCustomer";
 
 export function HeaderCompanies() {
   const [openModal, setOpenModal] = useState(false);
-  
+
   return <div className="flex justify-between items-center">
     <h2 className="text-2xl">List of companies</h2>
     <Dialog open={openModal} onOpenChange={setOpenModal}>
