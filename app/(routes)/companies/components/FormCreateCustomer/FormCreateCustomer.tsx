@@ -26,6 +26,8 @@ import {
 } from "@/components/ui/select";
 import { UploadButton } from "@/utils/uploadthing";
 import { useToast } from "@/hooks/use-toast";
+import axios from 'axios'
+import { useRouter } from "next/navigation";
 
 
 
@@ -41,6 +43,7 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
   const { setOpenModal } = props;
 
   const [photoUploaded, setPhotoUploaded] = useState(false);
+  const router = useRouter()
 
   const { toast } = useToast()
 
@@ -59,7 +62,19 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
   const { isValid } = form.formState;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    try {
+      axios.post("/api/company", values)
+      toast({
+        title: "Company created"
+      })
+      router.refresh()
+      setOpenModal(false)
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        variant: "destructive"
+      })
+    }
   };
 
   return (

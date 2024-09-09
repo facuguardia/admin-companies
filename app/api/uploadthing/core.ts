@@ -3,7 +3,7 @@ import { auth } from "@clerk/nextjs";
 
 const f = createUploadthing();
 
-const handleAuth = (): any => {
+const handleAuth = (): any  => {
   const { userId } = auth();
 
   if (!userId) throw new Error("Unauthorized");
