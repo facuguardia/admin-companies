@@ -168,7 +168,7 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
                   <FormControl>
                     <Input
                       placeholder="www.website.com"
-                      type="url"
+                      type="text"
                       {...field}
                     />
                   </FormControl>
@@ -181,7 +181,7 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
             {/* Phone */}
             <FormField
               control={form.control}
-              name="name"
+              name="phone"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Phone</FormLabel>

@@ -1,9 +1,10 @@
 import React from "react";
 import { HeaderCompanies } from "./components/HeaderCompanies";
+import { ListCompanies } from "./components/ListCompanies";
 
 export default function CompaniesPage() {
   return <div>
     <HeaderCompanies />
-    <p>List Companies</p>
+    <ListCompanies />
   </div>;
 }
