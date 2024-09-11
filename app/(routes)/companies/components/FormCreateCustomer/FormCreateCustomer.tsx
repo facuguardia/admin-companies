@@ -1,22 +1,26 @@
 "use client";
 
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { UploadButton } from "@/utils/uploadthing";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
+import axios from "axios";
+
+import { FormCreateCustomerProps } from "./FormCreateCustomer.types";
 
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { FormCreateCustomerProps } from "./FormCreateCustomer.types";
-import { useState } from "react";
 import {
   Select,
   SelectContent,
@@ -24,12 +28,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { UploadButton } from "@/utils/uploadthing";
-import { useToast } from "@/hooks/use-toast";
-import axios from 'axios'
-import { useRouter } from "next/navigation";
-
-
 
 const formSchema = z.object({
   name: z.string(),
@@ -43,9 +41,9 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
   const { setOpenModal } = props;
 
   const [photoUploaded, setPhotoUploaded] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
 
-  const { toast } = useToast()
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -63,17 +61,17 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      axios.post("/api/company", values)
+      axios.post("/api/company", values);
       toast({
-        title: "Company created"
-      })
-      router.refresh()
-      setOpenModal(false)
+        title: "Company created",
+      });
+      router.refresh();
+      setOpenModal(false);
     } catch (error) {
       toast({
         title: "Something went wrong",
-        variant: "destructive"
-      })
+        variant: "destructive",
+      });
     }
   };
 
@@ -82,7 +80,7 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="grid grid-cols-2 gap-3">
-            {/* Name */}
+            {/* company name */}
             <FormField
               control={form.control}
               name="name"
@@ -102,7 +100,7 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
               )}
             />
 
-            {/* Country */}
+            {/* country */}
             <FormField
               control={form.control}
               name="country"
@@ -119,37 +117,41 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="spain">España</SelectItem>
-                      <SelectItem value="usa">Estados Unidos</SelectItem>
-                      <SelectItem value="mexico">México</SelectItem>
-                      <SelectItem value="argentina">Argentina</SelectItem>
-                      <SelectItem value="brasil">Brasil</SelectItem>
-                      <SelectItem value="chile">Chile</SelectItem>
-                      <SelectItem value="colombia">Colombia</SelectItem>
-                      <SelectItem value="peru">Perú</SelectItem>
-                      <SelectItem value="venezuela">Venezuela</SelectItem>
-                      <SelectItem value="ecuador">Ecuador</SelectItem>
-                      <SelectItem value="bolivia">Bolivia</SelectItem>
-                      <SelectItem value="paraguay">Paraguay</SelectItem>
-                      <SelectItem value="uruguay">Uruguay</SelectItem>
-                      <SelectItem value="canada">Canadá</SelectItem>
-                      <SelectItem value="france">Francia</SelectItem>
-                      <SelectItem value="germany">Alemania</SelectItem>
-                      <SelectItem value="italy">Italia</SelectItem>
-                      <SelectItem value="unitedkingdom">Reino Unido</SelectItem>
-                      <SelectItem value="russia">Rusia</SelectItem>
-                      <SelectItem value="china">China</SelectItem>
-                      <SelectItem value="japan">Japón</SelectItem>
-                      <SelectItem value="india">India</SelectItem>
-                      <SelectItem value="australia">Australia</SelectItem>
-                      <SelectItem value="newzealand">Nueva Zelanda</SelectItem>
-                      <SelectItem value="southafrica">Sudáfrica</SelectItem>
-                      <SelectItem value="egypt">Egipto</SelectItem>
-                      <SelectItem value="nigeria">Nigeria</SelectItem>
-                      <SelectItem value="kenya">Kenia</SelectItem>
-                      <SelectItem value="southkorea">Corea del Sur</SelectItem>
-                      <SelectItem value="indonesia">Indonesia</SelectItem>
-                      <SelectItem value="iran">Irán</SelectItem>
+                      <SelectItem value="Argentina">Argentina</SelectItem>
+                      <SelectItem value="Australia">Australia</SelectItem>
+                      <SelectItem value="Bolivia">Bolivia</SelectItem>
+                      <SelectItem value="Brasil">Brasil</SelectItem>
+                      <SelectItem value="Canada">Canadá</SelectItem>
+                      <SelectItem value="Chile">Chile</SelectItem>
+                      <SelectItem value="China">China</SelectItem>
+                      <SelectItem value="Colombia">Colombia</SelectItem>
+                      <SelectItem value="Corea del sur">
+                        Corea del Sur
+                      </SelectItem>
+                      <SelectItem value="Ecuador">Ecuador</SelectItem>
+                      <SelectItem value="Egipto">Egipto</SelectItem>
+                      <SelectItem value="Espana">España</SelectItem>
+                      <SelectItem value="Estados Unidos">
+                        Estados Unidos
+                      </SelectItem>
+                      <SelectItem value="Francia">Francia</SelectItem>
+                      <SelectItem value="Germany">Alemania</SelectItem>
+                      <SelectItem value="Indonesia">Indonesia</SelectItem>
+                      <SelectItem value="India">India</SelectItem>
+                      <SelectItem value="Iran">Irán</SelectItem>
+                      <SelectItem value="Italy">Italia</SelectItem>
+                      <SelectItem value="Japan">Japón</SelectItem>
+                      <SelectItem value="Kenya">Kenia</SelectItem>
+                      <SelectItem value="Mexico">México</SelectItem>
+                      <SelectItem value="Newzealand">Nueva Zelanda</SelectItem>
+                      <SelectItem value="Nigeria">Nigeria</SelectItem>
+                      <SelectItem value="Paraguay">Paraguay</SelectItem>
+                      <SelectItem value="Peru">Perú</SelectItem>
+                      <SelectItem value="Reino Unido">Reino Unido</SelectItem>
+                      <SelectItem value="Russia">Rusia</SelectItem>
+                      <SelectItem value="Southafrica">Sudáfrica</SelectItem>
+                      <SelectItem value="Uruguay">Uruguay</SelectItem>
+                      <SelectItem value="Venezuela">Venezuela</SelectItem>
                     </SelectContent>
                   </Select>
 
@@ -158,7 +160,7 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
               )}
             />
 
-            {/* Website */}
+            {/* website */}
             <FormField
               control={form.control}
               name="website"
@@ -178,7 +180,7 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
               )}
             />
 
-            {/* Phone */}
+            {/* phone */}
             <FormField
               control={form.control}
               name="phone"
@@ -187,7 +189,7 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
                   <FormLabel>Phone</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="+34 633 41 02 99"
+                      placeholder="(+34) 633 41 02 99"
                       type="number"
                       {...field}
                     />
@@ -198,7 +200,7 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
               )}
             />
 
-            {/* Cif */}
+            {/* CIF */}
             <FormField
               control={form.control}
               name="cif"
@@ -214,7 +216,7 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
               )}
             />
 
-            {/* Profile Image */}
+            {/* profile image */}
             <FormField
               control={form.control}
               name="profileImage"
@@ -233,13 +235,13 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
                           form.setValue("profileImage", res?.[0].url);
                           toast({
                             title: "Photo uploaded!",
-                          })
+                          });
                           setPhotoUploaded(true);
                         }}
                         onUploadError={(error: Error) => {
                           toast({
-                          title: "Error uploading photo",
-                        })
+                            title: "Error uploading photo",
+                          });
                         }}
                       />
                     )}
@@ -250,7 +252,9 @@ export function FormCreateCustomer(props: FormCreateCustomerProps) {
               )}
             />
           </div>
-          <Button type="submit" disabled={!isValid}>Submit</Button>
+          <Button type="submit" disabled={!isValid}>
+            Submit
+          </Button>
         </form>
       </Form>
     </div>

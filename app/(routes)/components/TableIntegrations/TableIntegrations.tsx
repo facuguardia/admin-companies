@@ -2,7 +2,10 @@
 
 import * as React from "react";
 import Image from "next/image";
+import { formatPrice } from "@/lib/formatPrice";
+
 import { ChevronUp } from "lucide-react";
+
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -15,8 +18,6 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -26,9 +27,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Progress } from "@/components/ui/progress";
+import { Button } from "@/components/ui/button";
 
 import { TableIntegrationsProps } from "./TableIntegrations.types";
-import { formatPrice } from "@/lib/formatPrice";
+import { useRouter } from "next/navigation";
 
 const data: TableIntegrationsProps[] = [
   {
@@ -135,7 +137,6 @@ export function TableIntegrations() {
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
-       
       </div>
       <div className="rounded-md border">
         <Table>
