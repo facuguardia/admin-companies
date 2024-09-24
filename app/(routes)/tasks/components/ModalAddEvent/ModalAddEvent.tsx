@@ -16,7 +16,7 @@ export function ModalAddEvent(props: ModalAddEventProps) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Nuevo evento</DialogTitle>
+          <DialogTitle>New Event</DialogTitle>
         </DialogHeader>
         <FormEvent
           setNewEvent={setNewEvent}

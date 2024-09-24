@@ -40,16 +40,17 @@ export function SidebarRoutes() {
         </div>
       </div>
       <div>
-        <div className="text-center p-6">
+
+        {/* TODO: Future button to add subscription option */}
+        {/* <div className="text-center p-6">
           <Button variant="outline" className="w-full">
             Upgrade Plan
           </Button>
-        </div>
+        </div> */}
 
-        <Separator />
 
-        <footer className="mt-3 p-3 text-center">
-          &copy; 2024 www.facutech.com
+        <footer className="mt-3 p-3 text-center text-md text-slate-500 dark:text-slate-400">
+          &copy; 2024 <a href="https://www.facutech.com" target="_blank">www.facutech.com</a> 
         </footer>
       </div>
     </div>

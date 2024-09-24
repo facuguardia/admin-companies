@@ -27,7 +27,7 @@ export async function PATCH(
 
     return NextResponse.json(company);
   } catch (error) {
-    console.log("[Company Id]", error);
+    console.log("[COMPANY ID]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
@@ -52,7 +52,7 @@ export async function DELETE(
 
     return NextResponse.json(deletedCompany);
   } catch (error) {
-    console.log("[Company Delete]", error);
+    console.log("[COMPANY DELETE]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

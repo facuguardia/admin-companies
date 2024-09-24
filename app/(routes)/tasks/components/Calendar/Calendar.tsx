@@ -58,13 +58,13 @@ export function Calendar(props: CalendarProps) {
         )
         .then(() => {
           toast({
-            title: "Evento creado",
+            title: "Event created",
           });
           router.refresh();
         })
         .catch((error) => {
           toast({
-            title: "Error al crear el evento",
+            title: "Error creating the event",
             variant: "destructive",
           });
         });
@@ -78,26 +78,25 @@ export function Calendar(props: CalendarProps) {
       });
 
       setOnSaveNewEvent(false);
-
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onSaveNewEvent, selectedItem, event]);
 
   const handleEventClick = async (selected: any) => {
     if (
       window.confirm(
-        "Are you sure mant to delete this event ${selected.event.title}"
+        `Are you sure mant to delete this event ${selected.event.title}`
       )
     ) {
       try {
-        await axios.delete(`/api/event/${selected.event._def.publicId}`);
+        await axios.delete(`/api/event/${selected.event._def.publicId}`)
         toast({
-          title: "Evento eliminado",
+          title: "Event Deleted",
         });
         router.refresh();
       } catch (error) {
         toast({
-          title: "Algo salió mal",
+          title: "Something went wrong",
           variant: "destructive",
         });
       }
@@ -109,7 +108,7 @@ export function Calendar(props: CalendarProps) {
       <div className="md:flex gap-x-3">
         <div className="w-[200px] relative">
           <div className="overflow-auto absolute left-0 top-0 h-full w-full">
-            <p className="text-xl mb-3">Listado de Tareas</p>
+            <p className="text-xl mb-3">Task List</p>
             {events.map((currenEvent) => (
               <div
                 key={currenEvent.id}

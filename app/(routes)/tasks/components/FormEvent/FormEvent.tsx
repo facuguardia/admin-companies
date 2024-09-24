@@ -83,7 +83,7 @@ export function FormEvent(props: FormEventProps) {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Reunión con..." {...field} />
+                    <Input placeholder="Meeting with..." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -96,7 +96,7 @@ export function FormEvent(props: FormEventProps) {
               name="companieSelected.name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Empresa</FormLabel>
+                  <FormLabel>Assign the event to a company</FormLabel>
                   <Select
                     onValueChange={(newValue) => {
                       field.onChange(newValue);
@@ -106,7 +106,7 @@ export function FormEvent(props: FormEventProps) {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Seleccione una empresa" />
+                        <SelectValue placeholder="Select a company" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -121,7 +121,7 @@ export function FormEvent(props: FormEventProps) {
                 </FormItem>
               )}
             />
-          <Button type="submit">Guardar</Button>
+          <Button type="submit">Save</Button>
         </form>
       </Form>
     </div>
